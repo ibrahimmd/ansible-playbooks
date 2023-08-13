@@ -1,0 +1,5 @@
+---
+- name: Install formula rpk with 'homebrew'
+  homebrew:
+    name: redpanda-data/tap/redpanda
+    state: present

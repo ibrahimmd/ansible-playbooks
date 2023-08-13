@@ -1,5 +1,0 @@
----
-- name: Install formula kubectl with 'homebrew'
-  homebrew:
-    name: kubernetes-cli
-    state: present

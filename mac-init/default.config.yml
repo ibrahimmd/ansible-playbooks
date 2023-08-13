@@ -1,5 +1,7 @@
 config:
   install:
-    openlens: true
-    kubectl: true
-    shell_goodies: true
+    k8s_tools: true
+    shell_tools: true
+    network_tools: true
+    kafka_tools: true
+  

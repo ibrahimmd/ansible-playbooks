@@ -1,0 +1,30 @@
+---
+- name: Install formula iperf with 'homebrew'
+  homebrew:
+    name: iperf
+    state: present
+
+- name: Install formula iperf3 with 'homebrew'
+  homebrew:
+    name: iperf3
+    state: present
+
+- name: Install formula nmap with 'homebrew'
+  homebrew:
+    name: nmap
+    state: present
+
+- name: Install formula wireshark with 'homebrew'
+  homebrew_cask:
+    name: wireshark
+    state: present
+
+- name: Install formula netcat with 'homebrew'
+  homebrew:
+    name: netcat
+    state: present
+
+- name: Install formula socat with 'homebrew'
+  homebrew:
+    name: socat
+    state: present

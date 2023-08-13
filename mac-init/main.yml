@@ -13,16 +13,19 @@
         - "{{ playbook_dir }}/config.yml"
 
   tasks:
-    - import_tasks: tasks/shell_goodies.yml
-      when: config.install.shell_goodies
-      tags: ["shell","goodies"]
+    - import_tasks: tasks/shell_tools.yml
+      when: config.install.shell_tools
+      tags: ["shell","shell_tools"]
 
-    - import_tasks: tasks/openlens.yml
-      when: config.install.openlens
-      tags: ["k8s","openlens"]
+    - import_tasks: tasks/k8s_tools.yml
+      when: config.install.k8s_tools
+      tags: ["k8s","k8s_tools"]
 
-    - import_tasks: tasks/kubectl.yml
-      when: config.install.kubectl
-      tags: ["k8s","kubectl"]
+    - import_tasks: tasks/network_tools.yml
+      when: config.install.network_tools
+      tags: ["network","network_tools"]
 
+    - import_tasks: tasks/kafka_tools.yml
+      when: config.install.kafka_tools
+      tags: ["kafka","kafka_tools"]
 
