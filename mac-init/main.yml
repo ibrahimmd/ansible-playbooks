@@ -21,5 +21,7 @@
       when: config.install.kubectl
       tags: ["k8s","kubectl"]
 
-
+    - import_tasks: tasks/tmux.yml
+      when: config.install.tmux
+      tags: ["shell","tmux"]
 
