@@ -1,0 +1,5 @@
+---
+- name: Install formula openlens with 'homebrew'
+  homebrew_cask:
+    name: openlens
+    state: present

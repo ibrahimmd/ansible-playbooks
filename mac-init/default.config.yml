@@ -1,0 +1,5 @@
+config:
+  install:
+    openlens: true
+    kubectl: true
+  
