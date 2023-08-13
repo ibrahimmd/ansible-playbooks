@@ -2,5 +2,4 @@ config:
   install:
     openlens: true
     kubectl: true
-    tmux: true
-  
+    shell_goodies: true

@@ -1,5 +1,0 @@
----
-- name: Install formula tmux with 'homebrew'
-  homebrew:
-    name: tmux
-    state: present

@@ -13,6 +13,10 @@
         - "{{ playbook_dir }}/config.yml"
 
   tasks:
+    - import_tasks: tasks/shell_goodies.yml
+      when: config.install.shell_goodies
+      tags: ["shell","goodies"]
+
     - import_tasks: tasks/openlens.yml
       when: config.install.openlens
       tags: ["k8s","openlens"]
@@ -21,7 +25,4 @@
       when: config.install.kubectl
       tags: ["k8s","kubectl"]
 
-    - import_tasks: tasks/tmux.yml
-      when: config.install.tmux
-      tags: ["shell","tmux"]
 
