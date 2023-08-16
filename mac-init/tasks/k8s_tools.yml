@@ -1,20 +1,15 @@
 ---
-- name: Install formula kubectl with 'homebrew'
+- name: Install k8s tools
   homebrew:
-    name: kubernetes-cli
+    name: 
+      - kubernetes-cli
+      - krew
+      - derailed/k9s/k9s
+      - kops
     state: present
 
-- name: Install formula krew with 'homebrew'
-  homebrew:
-    name: krew
-    state: present
-
-- name: Install formula k9s with 'homebrew'
-  homebrew:
-    name: derailed/k9s/k9s
-    state: present
-
-- name: Install formula openlens with 'homebrew'
+- name: Install k8s gui tools
   homebrew_cask:
-    name: openlens
+    name: 
+      - openlens
     state: present

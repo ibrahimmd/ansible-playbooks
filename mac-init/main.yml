@@ -29,3 +29,14 @@
       when: config.install.kafka_tools
       tags: ["kafka","kafka_tools"]
 
+    - import_tasks: tasks/redis_tools.yml
+      when: config.install.redis_tools
+      tags: ["redis","redis_tools"]
+
+    - import_tasks: tasks/coding_tools.yml
+      when: config.install.coding_tools
+      tags: ["coding","coding_tools"]
+
+    - import_tasks: tasks/db_tools.yml
+      when: config.install.db_tools
+      tags: ["db","db_tools"]

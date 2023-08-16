@@ -1,0 +1,11 @@
+---
+- name: Install py,node,go shims
+  homebrew:
+    name:
+      - pyenv
+      - nodenv
+      - goenv
+    state: present
+
+
+

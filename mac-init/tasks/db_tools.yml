@@ -1,0 +1,10 @@
+---
+- name: Install pg, mysql client
+  homebrew:
+    name:
+      - libpq
+      - mysql-client
+    state: present
+
+
+

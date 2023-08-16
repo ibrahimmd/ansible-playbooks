@@ -4,4 +4,7 @@ config:
     shell_tools: true
     network_tools: true
     kafka_tools: true
+    coding_tools: true
+    db_tools: true
+    redis_tools: true
   

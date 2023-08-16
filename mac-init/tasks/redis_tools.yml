@@ -1,0 +1,9 @@
+---
+- name: Install redis tools
+  homebrew:
+    name: 
+      - redis
+    state: present
+
+- name: Disable redis-server from starting up
+  command: brew services stop redis

@@ -1,5 +1,6 @@
 ---
-- name: Install formula rpk with 'homebrew'
+- name: Install kafka tools
   homebrew:
-    name: redpanda-data/tap/redpanda
+    name: 
+      - redpanda-data/tap/redpanda
     state: present

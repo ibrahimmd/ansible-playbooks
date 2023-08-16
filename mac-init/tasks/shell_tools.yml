@@ -1,15 +1,9 @@
 ---
-- name: Install formula tmux with 'homebrew'
+- name: Install shell tools
   homebrew:
-    name: tmux
+    name: 
+      - tmux
+      - jq
+      - yq
     state: present
 
-- name: Install formula jq with 'homebrew'
-  homebrew:
-    name: jq
-    state: present
-
-- name: Install formula yq with 'homebrew'
-  homebrew:
-    name: yq
-    state: present
