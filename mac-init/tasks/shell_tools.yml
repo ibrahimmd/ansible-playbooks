@@ -1,9 +1,61 @@
 ---
-- name: Install shell tools
-  homebrew:
-    name: 
-      - tmux
-      - jq
-      - yq
-    state: present
+# - name: Install shell tools
+#   homebrew:
+#     name: 
+#       - tmux
+#       - jq
+#       - yq
+#     state: present
 
+- name: "check if '{{ shell.ohmyzsh.install_dir }}' exists"
+  stat:
+    path: '{{ shell.ohmyzsh.install_dir }}'
+  register: ohmyzsh
+
+- name: install ohmyzsh
+  block:
+    - name: 'create {{ shell.ohmyzsh.install_dir }} directory'
+      file:
+        path: '{{ shell.ohmyzsh.install_dir }}'
+        state: 'directory'
+    - name: 'git clone ohmyzsh'
+      git:
+        repo: '{{ shell.ohmyzsh.git_repo }}'
+        dest: '{{ shell.ohmyzsh.install_dir }}'
+        clone: true
+    - name: 'check if .zshrc file exists'
+      stat:
+        path: '~/.zshrc'
+      register: zshrc_file
+
+    - name: 'copy ohmyzsh .zshrc template file'
+      copy:
+        src: '{{ shell.ohmyzsh.install_dir }}/templates/zshrc.zsh-template'
+        dest: '~/.zshrc'
+      when: zshrc_file.stat.exists == false
+    
+    - name: 'install powerlevel10k ohmyzsh theme'
+      git:
+        repo: '{{ shell.ohmyzsh.themes.powerlevel10k.git_repo }}'
+        dest: '{{ shell.ohmyzsh.install_dir }}/themes/powerlevel10k'
+        clone: true
+    
+    - name: 'set ohmyzsh theme to powerlevel10k/powerlevel10k'
+      lineinfile:
+        path: '~/.zshrc'
+        regexp: '^ZSH_THEME='
+        line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
+    
+    - name: 'run "p10k configure" manually to configure theme'
+      debug:
+        msg: "run 'p10k configure' manually to configure theme"
+  when: ohmyzsh.stat.exists == false
+
+- name: debug print
+  debug:
+    msg: '{{ shell.ohmyzsh.install_dir }} directory'
+
+
+- name: debug print
+  debug:
+    var: ohmyzsh

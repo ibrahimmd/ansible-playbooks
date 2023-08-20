@@ -1,0 +1,8 @@
+shell:
+  ohmyzsh:
+    git_repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
+    install_dir: '~/.oh-my-zsh'
+    themes:
+      powerlevel10k:
+        git_repo: 'https://github.com/romkatv/powerlevel10k.git'
+
