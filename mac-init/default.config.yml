@@ -7,4 +7,6 @@ config:
     coding_tools: true
     db_tools: true
     redis_tools: true
-  
+    macos_tools: true
+    tools: true
+    dotfiles: true

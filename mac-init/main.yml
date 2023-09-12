@@ -40,3 +40,15 @@
     - import_tasks: tasks/db_tools.yml
       when: config.install.db_tools
       tags: ["db","db_tools"]
+  
+    - import_tasks: tasks/macos_tools.yml
+      when: config.install.macos_tools
+      tags: ["macos","macos_tools"]  
+
+    - import_tasks: tasks/tools.yml
+      when: config.install.tools
+      tags: ["tools"]  
+
+    - import_tasks: tasks/dotfiles.yml
+      when: config.install.dotfiles
+      tags: ["dotfiles"]  

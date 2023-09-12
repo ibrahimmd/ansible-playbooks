@@ -7,4 +7,10 @@
     state: present
 
 
+# FIXME: is there an ansbile way to do this?
+- name: Create pg, mysql client links
+  command: brew link --force {{ item }}
+  loop:
+    - libpq
+    - mysql-client
 

@@ -4,7 +4,7 @@
     name: 
       - kubernetes-cli
       - krew
-      - derailed/k9s/k9s
+      - k9s
       - kops
     state: present
 

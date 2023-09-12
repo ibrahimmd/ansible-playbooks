@@ -1,11 +1,23 @@
 ---
-# - name: Install shell tools
-#   homebrew:
-#     name: 
-#       - tmux
-#       - jq
-#       - yq
-#     state: present
+- name: Install shell tools
+  homebrew:
+    name: 
+      - tmux
+      - jq
+      - yq
+      - yamllint
+      - sops
+      - age
+      - gnupg
+      - k6
+      - pass-otp
+      - md5sha1sum
+      - sevenzip
+      - htop
+      - ntopng
+      - iterm2
+      - stow
+    state: present
 
 - name: "check if '{{ shell.ohmyzsh.install_dir }}' exists"
   stat:
@@ -51,11 +63,3 @@
         msg: "run 'p10k configure' manually to configure theme"
   when: ohmyzsh.stat.exists == false
 
-- name: debug print
-  debug:
-    msg: '{{ shell.ohmyzsh.install_dir }} directory'
-
-
-- name: debug print
-  debug:
-    var: ohmyzsh

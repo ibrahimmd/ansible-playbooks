@@ -1,0 +1,21 @@
+---
+# install all generic tools here
+- name: Install generic tools
+  homebrew:
+    name: 
+      - tmux
+      - jq
+      - yq
+      - yamllint
+      - sops
+      - age
+      - gnupg
+      - k6
+      - pass-otp
+      - md5sha1sum
+      - sevenzip
+      - htop
+      - ntopng
+      - iterm2
+      - stow
+    state: present

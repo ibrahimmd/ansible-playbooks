@@ -6,3 +6,7 @@ shell:
       powerlevel10k:
         git_repo: 'https://github.com/romkatv/powerlevel10k.git'
 
+dotfiles:
+  git_repo: 'https://github.com/ibrahimmd/dotfiles'
+  install_dir: '~/.dotfiles'
+  branch: 'master-macos'

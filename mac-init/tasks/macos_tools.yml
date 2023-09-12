@@ -1,0 +1,6 @@
+---
+- name: Install macos specific tools
+  homebrew_cask:
+    name: 
+      - flameshot
+    state: present
