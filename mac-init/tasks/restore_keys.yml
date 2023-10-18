@@ -1,0 +1,39 @@
+---
+- name: restore gpg keys
+  when: config.restore.gpg
+  block:  
+    - name: check if gpg binary exists
+      command: which gpg
+      register: gpg_installed
+      failed_when: gpg_installed.rc != 0
+
+    - name: "[manual action] restore gpg private key files to '{{ tmp.gpg_dir }}'"
+      pause: 
+        prompt: Restore all gpg private keys (*.key) to '{{ tmp.gpg_dir }}' that need to be imported from another window. Press any key to continue
+
+    # FIXME: not using --import-ownertrust
+    - name: importing gpg private keys
+      command: gpg --import --allow-secret-key-import {{ item }}
+      with_fileglob: '{{ tmp.gpg_dir }}/*.key'
+
+    - name: "[manual action] set trust level of imported gpg keys to ultimate"
+      pause:
+        prompt: "Run 'gpg --edit-key [key], trust, 5, quit. Press any key to continue"
+
+- name: restore age encryption key
+  when: config.restore.age
+  block: 
+    - name: "[manual action] restore age encryption key file to '{{ tmp.age_dir }}'"
+      pause: 
+        prompt: Copy age encryption key (age.key) to '{{ tmp.age_dir }}' from another window. Press any key to continue
+
+    # FIXME: not using --import-ownertrust
+    - name: "[TODO]: copy age file"
+      debug:
+        msg: "TODO"
+
+
+  
+  
+  
+

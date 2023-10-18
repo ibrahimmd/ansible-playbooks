@@ -1,3 +1,10 @@
 - name: Restore dotfiles
+  when: dotfiles_stage == "init"
   debug:
-    msg: "TODO: restore dotfiles"
+    msg: "TODO: restore dotfiles init stage"
+
+- name: Restore dotfiles
+  when: dotfiles_stage == "restore"
+  debug:
+    msg: "TODO: restore dotfiles restore stage"
+

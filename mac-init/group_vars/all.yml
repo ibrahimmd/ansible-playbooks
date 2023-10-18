@@ -9,4 +9,9 @@ shell:
 dotfiles:
   git_repo: 'https://github.com/ibrahimmd/dotfiles'
   install_dir: '~/.dotfiles'
-  branch: 'master-macos'
+  branch: 'stable/macos'
+
+
+tmp:
+  gpg_dir: ~/tmp/gpg  # gpg keys here will be imported into gpg
+  age_dir: ~/tmp/age  # age key file to be restored

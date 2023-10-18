@@ -1,0 +1,15 @@
+---
+- name: Install podman
+  homebrew:
+    name:
+      - podman
+    state: present
+
+- name: Install docker
+  homebrew_cask:
+    name: 
+      - docker
+    state: present
+
+
+

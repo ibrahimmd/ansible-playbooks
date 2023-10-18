@@ -1,0 +1,16 @@
+---
+- name: Add homebrew repos for kafka tools
+  homebrew_tap:
+    name: 
+      - birdayz/kaf
+      - deviceinsight/packages
+      - redpanda-data/tap
+    state: present
+
+- name: Install kafka tools
+  homebrew:
+    name: 
+      - redpanda
+      - kaf
+      - kafkactl
+    state: present

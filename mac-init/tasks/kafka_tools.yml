@@ -1,6 +1,0 @@
----
-- name: Install kafka tools
-  homebrew:
-    name: 
-      - redpanda-data/tap/redpanda
-    state: present

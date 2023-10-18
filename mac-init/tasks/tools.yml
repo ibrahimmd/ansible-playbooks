@@ -1,6 +1,6 @@
 ---
-# install all generic tools here
-- name: Install generic tools
+# install all common tools here
+- name: Install common tools
   homebrew:
     name: 
       - tmux
@@ -16,6 +16,13 @@
       - sevenzip
       - htop
       - ntopng
-      - iterm2
       - stow
+      - neovim
+      - go-task
+    state: present
+
+- name: Install common gui tools
+  homebrew_cask:
+    name: 
+      - iterm2
     state: present

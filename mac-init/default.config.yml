@@ -1,12 +1,16 @@
 config:
   install:
-    k8s_tools: true
-    shell_tools: true
-    network_tools: true
-    kafka_tools: true
-    coding_tools: true
-    db_tools: true
-    redis_tools: true
-    macos_tools: true
+    container: true
+    k8s: true
+    shell: true
+    network: true
+    kafka: true
+    coding: true
+    db: true
+    redis: true
+    macos: true
     tools: true
+  restore:
+    gpg: true
+    age: true
     dotfiles: true

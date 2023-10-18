@@ -4,6 +4,7 @@
     name: 
       - iperf
       - iperf3
+      - mtr
       - nmap
       - netcat
       - socat

@@ -13,42 +13,61 @@
         - "{{ playbook_dir }}/config.yml"
 
   tasks:
-    - import_tasks: tasks/shell_tools.yml
-      when: config.install.shell_tools
-      tags: ["shell","shell_tools"]
+    - import_tasks: tasks/shell.yml
+      when: config.install.shell
+      tags: ["shell"]
 
-    - import_tasks: tasks/k8s_tools.yml
-      when: config.install.k8s_tools
-      tags: ["k8s","k8s_tools"]
+    - import_tasks: tasks/container.yml
+      when: config.install.container
+      tags: ["container"]
 
-    - import_tasks: tasks/network_tools.yml
-      when: config.install.network_tools
-      tags: ["network","network_tools"]
+    - import_tasks: tasks/k8s.yml
+      when: config.install.k8s
+      tags: ["k8s"]
 
-    - import_tasks: tasks/kafka_tools.yml
-      when: config.install.kafka_tools
-      tags: ["kafka","kafka_tools"]
+    - import_tasks: tasks/network.yml
+      when: config.install.network
+      tags: ["network"]
 
-    - import_tasks: tasks/redis_tools.yml
-      when: config.install.redis_tools
-      tags: ["redis","redis_tools"]
+    - import_tasks: tasks/kafka.yml
+      when: config.install.kafka
+      tags: ["kafka"]
 
-    - import_tasks: tasks/coding_tools.yml
-      when: config.install.coding_tools
-      tags: ["coding","coding_tools"]
+    - import_tasks: tasks/redis.yml
+      when: config.install.redis
+      tags: ["redis"]
 
-    - import_tasks: tasks/db_tools.yml
-      when: config.install.db_tools
-      tags: ["db","db_tools"]
+    - import_tasks: tasks/coding.yml
+      when: config.install.coding
+      tags: ["coding"]
+
+    - import_tasks: tasks/db.yml
+      when: config.install.db
+      tags: ["db",]
   
-    - import_tasks: tasks/macos_tools.yml
-      when: config.install.macos_tools
-      tags: ["macos","macos_tools"]  
+    - import_tasks: tasks/macos.yml
+      when: config.install.macos
+      tags: ["macos"]  
 
     - import_tasks: tasks/tools.yml
       when: config.install.tools
       tags: ["tools"]  
 
+    # dotfiles need to be broken down into 2 steps: init and restore
     - import_tasks: tasks/dotfiles.yml
-      when: config.install.dotfiles
+      when: config.restore.dotfiles
+      vars:
+        dotfiles_stage: "init"
+      tags: ["dotfiles"]  
+
+    # restore keys used to decrypt sensitive files in dotfiles
+    - import_tasks: tasks/restore_keys.yml
+      when: config.restore.gpg or config.restore.age
+      tags: ["gpg","age"]
+
+    # restore dotfiles
+    - import_tasks: tasks/dotfiles.yml
+      when: config.restore.dotfiles
+      vars:
+        dotfiles_stage: "restore"
       tags: ["dotfiles"]  
